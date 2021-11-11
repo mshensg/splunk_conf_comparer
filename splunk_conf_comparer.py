@@ -110,7 +110,7 @@ def diffdict(object1,object2, keepempty=False, makeboolasnumber=True):
         result2 = object2
     return result1,result2
 
-def converRESTJson2Conf(jconf, skiplist=[],asString=False):
+def convertRESTJson2Conf(jconf, skiplist=[],asString=False):
     # convert the REST API output JSON file to configuration file. the extra response information from JSON interface will lost.
     # skiplist is a list of string using regex. it has to full match the key so to exclude them.
     if type(skiplist) is not list:
@@ -212,6 +212,6 @@ co2 = {i:od2[i] for i in od2.keys() if i in attentionkeys}
 #    jconf = json.loads("\r\n".join(f.readlines()))
 #    f.close()
 #
-#outputj = converRESTJson2Conf(jconf,["conf_replication_include\..*"])
+#outputj = convertRESTJson2Conf(jconf,["conf_replication_include\..*"])
 #confj = convertConf2Json(outputj)
 
