@@ -18,7 +18,7 @@ def convertConf2Json(configdata,containsdebug=False):
 
     for entry in config:
         line = entry.strip()
-        print(line, finished, section)
+        #print(line, finished, section)
         if len(line) == 0:
             pass #no content, ignore and keep the status
         elif line[0] == '#':
