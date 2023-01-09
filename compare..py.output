@@ -1,0 +1,70 @@
+#python3 ./compare.py 
+{
+    "filename1": "/opt/compare/8.0.6/splunk/etc/system/default/props.conf",
+    "filename2": "/opt/compare/9.0.3/splunk/etc/system/default/props.conf",
+    "added": {
+        "splunk_search_messages": {
+            "EXTRACT-log_level": "(?i)^(?:[^ ]* ){2}(?:[+\\-]\\d+ )?(?P<log_level>[^ ]*)"
+        },
+        "mcollect_stash": {
+            "ADD_EXTRA_TIME_FIELDS": false
+        },
+        "metrics_csv": {
+            "ADD_EXTRA_TIME_FIELDS": false
+        }
+    },
+    "removed": {
+        "source::.../wlm_monitor.log(.\\d+)?": {
+            "sourcetype": "wlm_monitor"
+        },
+        "source::.../var/log/splunk/configuration_change.log(.\\d+)?": {
+            "sourcetype": "splunk_configuration_change",
+            "TRUNCATE": 0
+        },
+        "source::.../mergebuckets.log(.\\d+)?": {
+            "sourcetype": "splunkd"
+        },
+        "default": {
+            "DETERMINE_TIMESTAMP_DATE_WITH_SYSTEM_TIME": false,
+            "termFrequencyWeightedDist": false,
+            "LB_CHUNK_BREAKER_TRUNCATE": 2000000
+        },
+        "splunk_search_messages": {
+            "EXTRACT-fields": "(?i)^(?:[^ ]* ){2}(?:[+\\-]\\d+ )?(?P<log_level>[^ ]*)\\s+(?P<component>[^ ]+) -"
+        },
+        "mcollect_stash": {
+            "ADD_EXTRA_TIME_FIELDS": "subseconds"
+        },
+        "splunkd_latency_tracker": {
+            "SHOULD_LINEMERGE": false,
+            "TIMESTAMP_FIELDS": "datetime",
+            "TIME_FORMAT": "%s.%l",
+            "INDEXED_EXTRACTIONS": "json",
+            "KV_MODE": "none"
+        },
+        "metrics_csv": {
+            "ADD_EXTRA_TIME_FIELDS": "subseconds"
+        },
+        "wlm_monitor": {
+            "MAX_TIMESTAMP_LOOKAHEAD": 40,
+            "TIME_FORMAT": "%m-%d-%Y %H:%M:%S.%l %z",
+            "SHOULD_LINEMERGE": false,
+            "TRUNCATE": 20000
+        },
+        "search_telemetry": {
+            "KV_MODE": "none",
+            "TRUNCATE": 1000000,
+            "INDEXED_EXTRACTIONS": "json"
+        },
+        "stash_hec": {
+            "SHOULD_LINEMERGE": false,
+            "pulldown_type": false,
+            "INDEXED_EXTRACTIONS": "hec",
+            "MAX_DAYS_HENCE": 2,
+            "MAX_DAYS_AGO": 10000,
+            "MAX_DIFF_SECS_AGO": 155520000,
+            "MAX_DIFF_SECS_HENCE": 155520000
+        }
+    },
+    "action": "edit"
+}
