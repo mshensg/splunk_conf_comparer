@@ -161,7 +161,9 @@ diff1,diff2 = diffdict(json1,json2)
 
 if diff1=={} and diff2=={}:
     # No difference
-    pass
+    changesummary={"filename1":file1,
+                   "filename2":file2,
+                   "action":"same"}
 else:
     if diff1=={}:
         subaction="remove"
